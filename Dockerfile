@@ -41,17 +41,16 @@ RUN git clone https://github.com/openresty/luajit2 && cd luajit2 &&  make && mak
 # Download Tengine
 RUN wget https://github.com/alibaba/tengine/archive/${TENGINE_VERSION}.zip  && unzip ${TENGINE_VERSION}.zip -d ${DEPLOY_PATH}
 
-# Todo: nginx-with-mosecurity
 # https://github.com/SpiderLabs/ModSecurity/wiki/Compilation-recipes-for-v3.x#centos-7-minimal-dynamic
-RUN git clone https://github.com/SpiderLabs/ModSecurity-nginx.git ;
 
 # Download The crs-3.0.1 Rules
 RUN wget https://github.com/SpiderLabs/owasp-modsecurity-crs/archive/v3.1.0.zip && unzip v3.1.0.zip -d /opt/ && \
 mv /opt/owasp-modsecurity-crs-3.1.0 /opt/owasp-modsecurity-crs
 
-
 RUN git clone --depth 1 -b v3/master --single-branch https://github.com/SpiderLabs/ModSecurity && cd ModSecurity && \
 git submodule init && git submodule update && ./build.sh && ./configure && make && make install
+
+# Todo: nginx-with-mosecurity
 RUN git clone --depth 1 https://github.com/SpiderLabs/ModSecurity-nginx.git
 
 RUN cd tengine-${TENGINE_VERSION} && \
