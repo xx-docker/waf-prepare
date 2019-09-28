@@ -104,8 +104,8 @@ RUN cd tengine-${TENGINE_VERSION} && \
        --with-debug  \
        --with-cc-opt="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -m64 -mtune=generic "  \
        --with-ld-opt="-Wl,-z,relro -specs=/usr/lib/rpm/redhat/redhat-hardened-ld -Wl,-E"  \
-       --with-compat --add-dynamic-module=../ModSecurity-nginx && make modules && \
-       cp objs/ngx_http_modsecurity_module.so /etc/nginx/modules
-
-RUN mkdir /etc/nginx/modsec && cp ModSecurity/unicode.mapping /etc/nginx/modsec/
+       --with-compat --add-dynamic-module=../ModSecurity-nginx && make modules 
+	   
+# cp objs/ngx_http_modsecurity_module.so /etc/nginx/modules
+# RUN mkdir /etc/nginx/modsec && cp ModSecurity/unicode.mapping /etc/nginx/modsec/
 
