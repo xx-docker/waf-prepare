@@ -1,0 +1,8 @@
+@version: 3.21
+@include "scl.conf"
+
+source access_log { file("/var/log/tengine/access.log");  };
+
+destination d_centserver2 { network("192.168.2.73" transport("tcp") port(30052)); };
+
+log { source(access_log); destination(d_centserver2); };
