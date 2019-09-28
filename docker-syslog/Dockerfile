@@ -14,7 +14,7 @@ ENV SYSLOG_NG_VERSION 3.22.1
 RUN yum -y install gcc gcc-c++ make wget curl
 RUN yum -y install epel-release
 RUN yum -y install python36 python36-devel python36-pip
-RUN yum -y install glib* json-c json-c-devel openssl openssl-devel
+RUN yum -y install glib* json-c json-c-devel openssl openssl-devel curl curl-devel
 WORKDIR /software/syslog-ng
 VOLUME /software/xetl
 
